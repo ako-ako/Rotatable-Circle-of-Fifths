@@ -17,6 +17,8 @@ void Main()
 {
 	const ColorF backgroundColor(U"#454545");
 	const ColorF foregroundColor(U"#e9e9e9");
+	const ColorF backgroundColorA(U"#45454580");
+	const ColorF foregroundColorA(U"#e9e9e980");
 
 	//Windowの生成
 	Window::SetTitle(U"五度圏");
@@ -26,8 +28,15 @@ void Main()
 	const String majorName[] = {U"C",U"F",U"B♭",U"E♭" ,U"A♭" ,U"D♭\nC♯" ,U"F♯\nG♭" ,U" B\nC♭" ,U"E" ,U"A" ,U"D",U"G" };
 	const String minorName[] = { U"Am",U"Dm",U"Gm",U"Cm" ,U"Fm" ,U"B♭m\nA♯m" ,U"D♯m\nE♭m" ,U"G♯m\nA♭m" ,U"C♯m" ,U"F♯m" ,U"Bm",U"Em" };
 
+	const String majorDegreeName[] = { U"I",U"IV",U"VII♭",U"III♭" ,U"VI♭" ,U"II♭ I♯" ,U"IV♯ V♭" ,U" VII I♭" ,U"III" ,U"VI" ,U"II",U"V" };
+	const String minorDegreeName[] = { U"VIm",U"IIm",U"Vm",U"Im" ,U"IVm" ,U"VII♭m\nVI♯m" ,U"II♯m\nIII♭m" ,U"V♯m\nVI♭m" ,U"I♯m" ,U"IV♯m" ,U"VIIm",U"IIIm" };
+
 	const Font majorFont(40, Typeface::Bold);
 	const Font minorFont(15, Typeface::Bold);
+	const Font majorFontS(30, Typeface::Bold);
+	const Font minorFontS(12, Typeface::Bold);
+	const Font majorDegreeFont(15, Typeface::Bold);
+	const Font minorDegreeFont(10, Typeface::Bold);
 	const Font infoFont(25);
 	const Font infoSmallFont(15);
 
@@ -85,17 +94,36 @@ void Main()
 		//#330
 		major.drawPie(Radians(pieStartDeg + pieOffsetDeg * 11), Radians(pieOffsetDeg), ColorF(U"#cacaca"));
 		minor.drawPie(Radians(pieStartDeg + pieOffsetDeg * 11), Radians(pieOffsetDeg), ColorF(U"#cacaca"));
-
-
+		
 		//中心を描画
 		center.draw(backgroundColor);
+
+		//枠線を描画
+		center.drawFrame(0, 85, foregroundColorA);
+		center.drawFrame(0, 40, foregroundColor);
+		center.drawFrame(2, 34, backgroundColor);
+		major.drawFrame(3, 3, foregroundColor);
+		minor.drawFrame(3, 3, foregroundColor);
+		major.drawFrame(50, 0, foregroundColorA);
+		
 
 		//音名を描画
 		for(int i = 0; i < std::end(majorName) - std::begin(majorName); i++)
 		{
-			majorFont(majorName[i]).drawAt(Rotation2D(Point(circleX, circleY - circleSize + circleSize / 4), Point(circleX, circleY), (pieOffsetDeg * i) + mainDegOffset), Palette::Black);
-			minorFont(minorName[i]).drawAt(Rotation2D(Point(circleX, circleY - circleSize / 2 + circleSize / 6), Point(circleX, circleY), (pieOffsetDeg * i) + mainDegOffset), Palette::Black);
+			majorDegreeFont(majorDegreeName[i]).drawAt(Rotation2D(Point(circleX, circleY - circleSize + circleSize / 4 - 55), Point(circleX, circleY), pieOffsetDeg * i), Palette::Black);
+			minorDegreeFont(minorDegreeName[i]).drawAt(Rotation2D(Point(circleX, circleY - circleSize / 2 + circleSize / 6 + 25), Point(circleX, circleY), pieOffsetDeg * i), Palette::Black);
 
+			if(i == 5 || i == 6 || i == 7)
+			{
+				majorFontS(majorName[i]).drawAt(Rotation2D(Point(circleX, circleY - circleSize + circleSize / 4 + 25), Point(circleX, circleY), (pieOffsetDeg * i) + mainDegOffset), Palette::Black);
+				minorFontS(minorName[i]).drawAt(Rotation2D(Point(circleX, circleY - circleSize / 2 + circleSize / 6 - 22), Point(circleX, circleY), (pieOffsetDeg * i) + mainDegOffset), Palette::Black);
+
+			}
+			else
+			{
+				majorFont(majorName[i]).drawAt(Rotation2D(Point(circleX, circleY - circleSize + circleSize / 4 + 25), Point(circleX, circleY), (pieOffsetDeg * i) + mainDegOffset), Palette::Black);
+				minorFont(minorName[i]).drawAt(Rotation2D(Point(circleX, circleY - circleSize / 2 + circleSize / 6 - 22), Point(circleX, circleY), (pieOffsetDeg * i) + mainDegOffset), Palette::Black);
+			}			
 		}
 		
 		//解説を描画
@@ -121,12 +149,6 @@ void Main()
 		{
 			pieOffsetDeg = pieOffsetDeg * -1;
 		}*/
-
-		//枠線を描画
-		center.drawFrame(0, 40, foregroundColor);
-		center.drawFrame(2, 34, backgroundColor);
-		major.drawFrame(3, 3, foregroundColor);
-		minor.drawFrame(3, 3, foregroundColor);
 		
 		/*if(major.mouseOver() && !minor.mouseOver())
 		{

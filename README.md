@@ -15,7 +15,7 @@ Rotatable Circle of Fifths 回転できる五度圏
 
 ## Usage
 Left Key: Rotate to left.  
-Right Key: Rotate to Right.
+Right Key: Rotate to right.
 
 ## Install
 
