@@ -6,25 +6,17 @@ Rotatable Circle of Fifths 回転できる五度圏
 ## Description
 
 ## Demo
-![Demo](https://github.com/ako-ako/Rotatable-Circle-of-Fifths/blob/master/CircleOfFifthsSiv3D.gif)
-
-## VS. 
+![Demo](https://github.com/ako-ako/Rotatable-Circle-of-Fifths/blob/master/CircleOfFifths.gif)
 
 ## Requirement
-[OpenSiv3D v0.2.8+](https://github.com/Siv3D/OpenSiv3D)
+[OpenSiv3D v0.4.3](https://github.com/Siv3D/OpenSiv3D)
 
 ## Usage
 Left Key: Rotate to left.  
 Right Key: Rotate to right.
 
-## Install
-
-## Contribution
-
 ## Licence
-
 [MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
 
 ## Author
-
 [ako_ako](https://github.com/ako-ako)
