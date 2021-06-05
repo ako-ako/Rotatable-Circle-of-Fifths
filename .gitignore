@@ -17,6 +17,8 @@
 Intermediate/
 App/AS_DEBUG/
 App/example/
+App/*(debug).exe
+App/*(debug)_log.html
 
 # Mono auto generated files
 mono_crash.*
