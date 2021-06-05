@@ -3,6 +3,13 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# OpenSiv3D
+Intermediate/
+/**/App/AS_DEBUG/
+/**/App/example/
+/**/App/*(debug).exe
+/**/App/*(debug)_log.html
+
 # User-specific files
 *.rsuser
 *.suo
@@ -12,13 +19,6 @@
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
-
-# Siv3D
-Intermediate/
-App/AS_DEBUG/
-App/example/
-App/*(debug).exe
-App/*(debug)_log.html
 
 # Mono auto generated files
 mono_crash.*
